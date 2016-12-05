@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2016-12-05T17:43:30</DateModified>
+  <DateModified>2016-12-05T18:53:32</DateModified>
   <ModuleName>InterfaceBoard</ModuleName>
-  <SummaryTimeStamp>2016-12-05T09:32:23</SummaryTimeStamp>
+  <SummaryTimeStamp>2016-12-05T18:39:53</SummaryTimeStamp>
   <SavedFilePath>/home/nabav/Workspace/InterfaceBoard/iseconfig/InterfaceBoard.xreport</SavedFilePath>
   <ImplementationReportsDirectory>/home/nabav/Workspace/InterfaceBoard/</ImplementationReportsDirectory>
   <DateInitialized>2016-12-04T18:07:49</DateInitialized>

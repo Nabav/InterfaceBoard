@@ -89,4 +89,5 @@ begin
 			end if;
 		end if;
 	end process;
+	RX_RS485 <= TX_RS485;
 end;

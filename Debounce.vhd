@@ -25,7 +25,7 @@ begin
 			elsif (debounce_sr = (2**depth - 1)) then
 				filtered <= '1';
 			end if;
-			debounce_sr := debounce_sr(6 downto 0) & original;
+			debounce_sr := debounce_sr(depth - 2 downto 0) & original;
 		end if;
 	end process;
 end Behavioral;
