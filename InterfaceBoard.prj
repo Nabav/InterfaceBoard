@@ -1,0 +1,4 @@
+vhdl work "UART_Transmitter.vhd"
+vhdl work "UART_Receiver.vhd"
+vhdl work "Debounce.vhd"
+vhdl work "InterfaceBoard.vhd"

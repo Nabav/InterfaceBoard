@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "/home/nabav/Workspace/InterfaceBoard/InterfaceBoard.xst" -ofn "/home/nabav/Workspace/InterfaceBoard/InterfaceBoard.syr" 

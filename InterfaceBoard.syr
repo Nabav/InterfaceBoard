@@ -1,0 +1,696 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Reading design: InterfaceBoard.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "InterfaceBoard.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "InterfaceBoard"
+Output Format                      : NGC
+Target Device                      : xc6slx45-3-fgg484
+
+---- Source Options
+Top Module Name                    : InterfaceBoard
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/UART_Transmitter.vhd" into library work
+Parsing entity <UART_Transmitter>.
+Parsing architecture <Behavioral> of entity <uart_transmitter>.
+Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/UART_Receiver.vhd" into library work
+Parsing entity <UART_Receiver>.
+Parsing architecture <Behavioral> of entity <uart_receiver>.
+Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/Debounce.vhd" into library work
+Parsing entity <Debounce>.
+Parsing architecture <Behavioral> of entity <debounce>.
+Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/InterfaceBoard.vhd" into library work
+Parsing entity <InterfaceBoard>.
+Parsing architecture <Behavioral> of entity <interfaceboard>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <InterfaceBoard> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <Debounce> (architecture <Behavioral>) with generics from library <work>.
+
+Elaborating entity <UART_Receiver> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <UART_Transmitter> (architecture <Behavioral>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <InterfaceBoard>.
+    Related source file is "/home/nabav/Workspace/InterfaceBoard/InterfaceBoard.vhd".
+WARNING:Xst:647 - Input <RX_RS485> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	no macro.
+Unit <InterfaceBoard> synthesized.
+
+Synthesizing Unit <Debounce>.
+    Related source file is "/home/nabav/Workspace/InterfaceBoard/Debounce.vhd".
+        depth = 8
+    Found 8-bit register for signal <debounce_sr>.
+    Found 1-bit register for signal <filtered>.
+    Summary:
+	inferred   9 D-type flip-flop(s).
+Unit <Debounce> synthesized.
+
+Synthesizing Unit <UART_Receiver>.
+    Related source file is "/home/nabav/Workspace/InterfaceBoard/UART_Receiver.vhd".
+    Found 1-bit register for signal <clk_rx>.
+    Found 1-bit register for signal <Clock_Synchronizer.RX_RS232_old>.
+    Found 10-bit register for signal <Serial_Rx_Shift_Register.sr>.
+    Found 8-bit register for signal <received_byte>.
+    Found 1-bit register for signal <received_byte_ready>.
+    Found 1-bit register for signal <Serial_Rx_Shift_Register.clk_rx_old>.
+    Found 8-bit register for signal <PC_Rx_Buffer<0>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<1>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<2>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<3>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<4>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<5>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<6>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<7>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<8>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<9>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<10>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<11>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<12>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<13>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<14>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<15>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<16>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<17>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<18>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<19>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<20>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<21>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<22>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<23>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<24>>.
+    Found 8-bit register for signal <PC_Rx_Buffer<25>>.
+    Found 1-bit register for signal <PC_Rx_Data_Ready>.
+    Found 3-bit register for signal <PC_Rx_Packet_Type>.
+    Found 3-bit register for signal <PC_Rx_Jack_Nember>.
+    Found 8-bit register for signal <PC_Rx_Parameter_Address>.
+    Found 16-bit register for signal <PC_Rx_Parameter_Value>.
+    Found 32-bit register for signal <PC_Rx_Jack1_Cyclic_Command>.
+    Found 32-bit register for signal <PC_Rx_Jack2_Cyclic_Command>.
+    Found 32-bit register for signal <PC_Rx_Jack3_Cyclic_Command>.
+    Found 32-bit register for signal <PC_Rx_Jack4_Cyclic_Command>.
+    Found 32-bit register for signal <PC_Rx_Jack5_Cyclic_Command>.
+    Found 32-bit register for signal <PC_Rx_Jack6_Cyclic_Command>.
+    Found 1-bit register for signal <Frame_Decoder.received_byte_ready_old>.
+    Found 9-bit register for signal <baudrate_prescaler_counter>.
+    Found 9-bit adder for signal <baudrate_prescaler_counter[8]_GND_8_o_add_1_OUT> created at line 45.
+    Found 8-bit adder for signal <n0293> created at line 116.
+    Found 8-bit adder for signal <n0296> created at line 116.
+    Found 8-bit adder for signal <n0299> created at line 116.
+    Found 8-bit adder for signal <n0302> created at line 116.
+    Found 8-bit adder for signal <n0305> created at line 116.
+    Found 8-bit adder for signal <n0308> created at line 116.
+    Found 8-bit adder for signal <n0311> created at line 116.
+    Found 8-bit adder for signal <n0314> created at line 116.
+    Found 8-bit adder for signal <n0317> created at line 116.
+    Found 8-bit adder for signal <n0320> created at line 116.
+    Found 8-bit adder for signal <n0323> created at line 116.
+    Found 8-bit adder for signal <n0326> created at line 116.
+    Found 8-bit adder for signal <n0329> created at line 116.
+    Found 8-bit adder for signal <n0332> created at line 116.
+    Found 8-bit adder for signal <n0335> created at line 116.
+    Found 8-bit adder for signal <n0338> created at line 116.
+    Found 8-bit adder for signal <n0341> created at line 116.
+    Found 8-bit adder for signal <n0344> created at line 116.
+    Found 8-bit adder for signal <n0347> created at line 116.
+    Found 8-bit adder for signal <n0350> created at line 116.
+    Found 8-bit adder for signal <n0353> created at line 116.
+    Found 8-bit adder for signal <n0356> created at line 116.
+    Found 8-bit adder for signal <n0359> created at line 116.
+    Found 8-bit adder for signal <n0362> created at line 116.
+    Found 8-bit adder for signal <checksum> created at line 116.
+    Found 8x1-bit Read Only RAM for signal <PC_Rx_Buffer[0][2]_GND_8_o_Mux_39_o>
+    Found 9-bit comparator lessequal for signal <n0002> created at line 42
+    Found 9-bit comparator lessequal for signal <baudrate_prescaler_counter[8]_GND_8_o_LessThan_4_o> created at line 47
+    Summary:
+	inferred   1 RAM(s).
+	inferred  26 Adder/Subtractor(s).
+	inferred 463 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+Unit <UART_Receiver> synthesized.
+
+Synthesizing Unit <UART_Transmitter>.
+    Related source file is "/home/nabav/Workspace/InterfaceBoard/UART_Transmitter.vhd".
+    Found 1-bit register for signal <TX_RS232>.
+    Found 4-bit register for signal <bit_number>.
+    Found 5-bit register for signal <byte_number>.
+    Found 2-bit register for signal <state>.
+    Found 8-bit register for signal <PC_Tx_Buffer<0>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<1>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<2>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<3>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<4>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<5>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<6>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<7>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<8>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<9>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<10>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<11>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<12>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<13>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<14>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<15>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<16>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<17>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<18>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<19>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<20>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<21>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<22>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<23>>.
+    Found 8-bit register for signal <PC_Tx_Buffer<24>>.
+    Found 1-bit register for signal <UART_Tx_FSM.PC_Response_Ready_old>.
+    Found 9-bit register for signal <baudrate_prescaler_counter>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 13                                             |
+    | Inputs             | 8                                              |
+    | Outputs            | 2                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Power Up State     | idle                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 9-bit adder for signal <baudrate_prescaler_counter[8]_GND_9_o_add_1_OUT> created at line 44.
+    Found 4-bit adder for signal <bit_number[3]_GND_9_o_add_38_OUT> created at line 107.
+    Found 5-bit adder for signal <byte_number[4]_GND_9_o_add_40_OUT> created at line 112.
+    Found 3-bit subtractor for signal <GND_9_o_GND_9_o_sub_35_OUT<2:0>> created at line 101.
+    Found 8-bit adder for signal <_n0428> created at line 31.
+    Found 8-bit adder for signal <_n0429> created at line 31.
+    Found 8-bit adder for signal <_n0430> created at line 31.
+    Found 8-bit adder for signal <_n0431> created at line 31.
+    Found 8-bit adder for signal <_n0432> created at line 31.
+    Found 8-bit adder for signal <_n0433> created at line 31.
+    Found 8-bit adder for signal <_n0434> created at line 31.
+    Found 8-bit adder for signal <_n0435> created at line 31.
+    Found 8-bit adder for signal <_n0436> created at line 31.
+    Found 8-bit adder for signal <_n0437> created at line 31.
+    Found 8-bit adder for signal <_n0438> created at line 31.
+    Found 8-bit adder for signal <_n0439> created at line 31.
+    Found 8-bit adder for signal <_n0440> created at line 31.
+    Found 8-bit adder for signal <_n0441> created at line 31.
+    Found 8-bit adder for signal <_n0442> created at line 31.
+    Found 8-bit adder for signal <_n0443> created at line 31.
+    Found 8-bit adder for signal <_n0444> created at line 31.
+    Found 8-bit adder for signal <_n0445> created at line 31.
+    Found 8-bit adder for signal <_n0446> created at line 31.
+    Found 8-bit adder for signal <_n0447> created at line 31.
+    Found 8-bit adder for signal <_n0448> created at line 31.
+    Found 8-bit adder for signal <_n0449> created at line 31.
+    Found 8-bit adder for signal <_n0450> created at line 31.
+    Found 8-bit adder for signal <_n0451> created at line 31.
+    Found 8-bit subtractor for signal <checksum> created at line 31.
+    Found 8-bit 26-to-1 multiplexer for signal <byte_number[4]_X_9_o_wide_mux_33_OUT> created at line 101.
+    Found 1-bit 8-to-1 multiplexer for signal <GND_9_o_byte_number[4]_Mux_35_o> created at line 101.
+    Found 9-bit comparator greater for signal <n0000> created at line 41
+    Found 4-bit comparator greater for signal <bit_number[3]_PWR_9_o_LessThan_38_o> created at line 106
+    Found 5-bit comparator greater for signal <byte_number[4]_PWR_9_o_LessThan_40_o> created at line 111
+    Summary:
+	inferred  29 Adder/Subtractor(s).
+	inferred 220 D-type flip-flop(s).
+	inferred   3 Comparator(s).
+	inferred  33 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <UART_Transmitter> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 8x1-bit single-port Read Only RAM                     : 1
+# Adders/Subtractors                                   : 55
+ 3-bit subtractor                                      : 1
+ 4-bit adder                                           : 1
+ 5-bit adder                                           : 1
+ 8-bit adder                                           : 49
+ 8-bit subtractor                                      : 1
+ 9-bit adder                                           : 2
+# Registers                                            : 61
+ 1-bit register                                        : 9
+ 10-bit register                                       : 1
+ 16-bit register                                       : 2
+ 3-bit register                                        : 2
+ 32-bit register                                       : 11
+ 4-bit register                                        : 1
+ 5-bit register                                        : 1
+ 8-bit register                                        : 32
+ 9-bit register                                        : 2
+# Comparators                                          : 5
+ 4-bit comparator greater                              : 1
+ 5-bit comparator greater                              : 1
+ 9-bit comparator greater                              : 1
+ 9-bit comparator lessequal                            : 2
+# Multiplexers                                         : 33
+ 1-bit 2-to-1 multiplexer                              : 3
+ 1-bit 8-to-1 multiplexer                              : 1
+ 4-bit 2-to-1 multiplexer                              : 2
+ 5-bit 2-to-1 multiplexer                              : 2
+ 8-bit 2-to-1 multiplexer                              : 24
+ 8-bit 26-to-1 multiplexer                             : 1
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+INFO:Xst:2261 - The FF/Latch <PC_Tx_Buffer_0_1> in Unit <PC_UART_Transmitter> is equivalent to the following 2 FFs/Latches, which will be removed : <PC_Tx_Buffer_0_6> <PC_Tx_Buffer_0_7> 
+INFO:Xst:2261 - The FF/Latch <PC_Tx_Buffer_0_3> in Unit <PC_UART_Transmitter> is equivalent to the following 2 FFs/Latches, which will be removed : <PC_Tx_Buffer_0_4> <PC_Tx_Buffer_0_5> 
+WARNING:Xst:1426 - The value init of the FF/Latch PC_Tx_Buffer_0_1 hinder the constant cleaning in the block PC_UART_Transmitter.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1293 - FF/Latch <PC_Tx_Buffer_0_3> has a constant value of 0 in block <PC_UART_Transmitter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <Serial_Rx_Shift_Register.sr_0> of sequential type is unconnected in block <PC_UART_Receiver>.
+
+Synthesizing (advanced) Unit <UART_Receiver>.
+The following registers are absorbed into counter <baudrate_prescaler_counter>: 1 register on signal <baudrate_prescaler_counter>.
+	The following adders/subtractors are grouped into adder tree <Madd_checksum1> :
+ 	<Madd_n0293> in block <UART_Receiver>, 	<Madd_n0296> in block <UART_Receiver>, 	<Madd_n0299> in block <UART_Receiver>, 	<Madd_n0302> in block <UART_Receiver>, 	<Madd_n0305> in block <UART_Receiver>, 	<Madd_n0308> in block <UART_Receiver>, 	<Madd_n0311> in block <UART_Receiver>, 	<Madd_n0314> in block <UART_Receiver>, 	<Madd_n0317> in block <UART_Receiver>, 	<Madd_n0320> in block <UART_Receiver>, 	<Madd_n0323> in block <UART_Receiver>, 	<Madd_n0326> in block <UART_Receiver>, 	<Madd_n0329> in block <UART_Receiver>, 	<Madd_n0332> in block <UART_Receiver>, 	<Madd_n0335> in block <UART_Receiver>, 	<Madd_n0338> in block <UART_Receiver>, 	<Madd_n0341> in block <UART_Receiver>, 	<Madd_n0344> in block <UART_Receiver>, 	<Madd_n0347> in block <UART_Receiver>, 	<Madd_n0350> in block <UART_Receiver>, 	<Madd_n0353> in block <UART_Receiver>, 	<Madd_n0356> in block <UART_Receiver>, 	<Madd_n0359> in block <UART_Receiver>, 	<Madd_n0362> in block <UART_Receiver>, 	<Madd_checksum> in block <UART_Receiver>.
+INFO:Xst:3231 - The small RAM <Mram_PC_Rx_Buffer[0][2]_GND_8_o_Mux_39_o> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 8-word x 1-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <PC_Rx_Buffer<0><2:0>> |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <UART_Receiver> synthesized (advanced).
+
+Synthesizing (advanced) Unit <UART_Transmitter>.
+The following registers are absorbed into counter <baudrate_prescaler_counter>: 1 register on signal <baudrate_prescaler_counter>.
+	The following adders/subtractors are grouped into adder tree <Msub_checksum1> :
+ 	<Madd__n0428> in block <UART_Transmitter>, 	<Madd__n0429> in block <UART_Transmitter>, 	<Madd__n0431> in block <UART_Transmitter>, 	<Madd__n0433> in block <UART_Transmitter>, 	<Madd__n0432> in block <UART_Transmitter>, 	<Madd__n0436> in block <UART_Transmitter>, 	<Madd__n0437> in block <UART_Transmitter>, 	<Madd__n0439> in block <UART_Transmitter>, 	<Madd__n0440> in block <UART_Transmitter>, 	<Madd__n0443> in block <UART_Transmitter>, 	<Madd__n0444> in block <UART_Transmitter>, 	<Madd__n0446> in block <UART_Transmitter>, 	<Madd__n0447> in block <UART_Transmitter>.
+	The following adders/subtractors are grouped into adder tree <Madd__n04511> :
+ 	<Madd__n0430> in block <UART_Transmitter>, 	<Madd__n0434> in block <UART_Transmitter>, 	<Madd__n0438> in block <UART_Transmitter>, 	<Madd__n0441> in block <UART_Transmitter>, 	<Madd__n0445> in block <UART_Transmitter>, 	<Madd__n0448> in block <UART_Transmitter>.
+	The following adders/subtractors are grouped into adder tree <Madd__n04501> :
+ 	<Madd__n0442> in block <UART_Transmitter>, 	<Madd__n0449> in block <UART_Transmitter>.
+Unit <UART_Transmitter> synthesized (advanced).
+WARNING:Xst:2677 - Node <Serial_Rx_Shift_Register.sr_0> of sequential type is unconnected in block <UART_Receiver>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 8x1-bit single-port distributed Read Only RAM         : 1
+# Adders/Subtractors                                   : 3
+ 3-bit subtractor                                      : 1
+ 4-bit adder                                           : 1
+ 5-bit adder                                           : 1
+# Adder Trees                                          : 2
+ 8-bit / 25-inputs adder tree                          : 1
+ 8-bit / 26-inputs adder tree                          : 1
+# Counters                                             : 2
+ 9-bit up counter                                      : 2
+# Registers                                            : 673
+ Flip-Flops                                            : 673
+# Comparators                                          : 5
+ 4-bit comparator greater                              : 1
+ 5-bit comparator greater                              : 1
+ 9-bit comparator greater                              : 1
+ 9-bit comparator lessequal                            : 2
+# Multiplexers                                         : 40
+ 1-bit 2-to-1 multiplexer                              : 3
+ 1-bit 26-to-1 multiplexer                             : 8
+ 1-bit 8-to-1 multiplexer                              : 1
+ 4-bit 2-to-1 multiplexer                              : 2
+ 5-bit 2-to-1 multiplexer                              : 2
+ 8-bit 2-to-1 multiplexer                              : 24
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1426 - The value init of the FF/Latch PC_Tx_Buffer_0_1 hinder the constant cleaning in the block UART_Transmitter.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch PC_Tx_Buffer_0_6 hinder the constant cleaning in the block UART_Transmitter.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch PC_Tx_Buffer_0_7 hinder the constant cleaning in the block UART_Transmitter.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1293 - FF/Latch <PC_Tx_Buffer_0_3> has a constant value of 0 in block <UART_Transmitter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <PC_Tx_Buffer_0_4> has a constant value of 0 in block <UART_Transmitter>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <PC_Tx_Buffer_0_5> has a constant value of 0 in block <UART_Transmitter>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <PC_Tx_Buffer_0_1> in Unit <UART_Transmitter> is equivalent to the following 2 FFs/Latches, which will be removed : <PC_Tx_Buffer_0_6> <PC_Tx_Buffer_0_7> 
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <PC_UART_Transmitter/FSM_0> on signal <state[1:2]> with user encoding.
+------------------------------
+ State            | Encoding
+------------------------------
+ idle             | 00
+ capture          | 01
+ send_bit         | 10
+ prepare_next_bit | 11
+------------------------------
+
+Optimizing unit <InterfaceBoard> ...
+
+Optimizing unit <Debounce> ...
+
+Optimizing unit <UART_Receiver> ...
+
+Optimizing unit <UART_Transmitter> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block InterfaceBoard, actual ratio is 4.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 688
+ Flip-Flops                                            : 688
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : InterfaceBoard.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 1463
+#      GND                         : 1
+#      INV                         : 10
+#      LUT1                        : 16
+#      LUT2                        : 83
+#      LUT3                        : 170
+#      LUT4                        : 556
+#      LUT5                        : 57
+#      LUT6                        : 86
+#      MUXCY                       : 219
+#      MUXF7                       : 14
+#      VCC                         : 1
+#      XORCY                       : 250
+# FlipFlops/Latches                : 688
+#      FD                          : 18
+#      FDE                         : 643
+#      FDR                         : 18
+#      FDSE                        : 9
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 34
+#      IBUF                        : 1
+#      OBUF                        : 33
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx45fgg484-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             688  out of  54576     1%  
+ Number of Slice LUTs:                  978  out of  27288     3%  
+    Number used as Logic:               978  out of  27288     3%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   1171
+   Number with an unused Flip Flop:     483  out of   1171    41%  
+   Number with an unused LUT:           193  out of   1171    16%  
+   Number of fully used LUT-FF pairs:   495  out of   1171    42%  
+   Number of unique control sets:        18
+
+IO Utilization: 
+ Number of IOs:                          38
+ Number of bonded IOBs:                  35  out of    316    11%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 688   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 10.629ns (Maximum Frequency: 94.079MHz)
+   Minimum input arrival time before clock: 1.903ns
+   Maximum output required time after clock: 3.668ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 10.629ns (frequency: 94.079MHz)
+  Total number of paths / destination ports: 23006409 / 1365
+-------------------------------------------------------------------------
+Delay:               10.629ns (Levels of Logic = 18)
+  Source:            PC_UART_Receiver/PC_Rx_Buffer_2_0 (FF)
+  Destination:       PC_UART_Receiver/PC_Rx_Jack1_Cyclic_Command_31 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: PC_UART_Receiver/PC_Rx_Buffer_2_0 to PC_UART_Receiver/PC_Rx_Jack1_Cyclic_Command_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              4   0.447   0.788  PC_UART_Receiver/PC_Rx_Buffer_2_0 (PC_UART_Receiver/PC_Rx_Buffer_2_0)
+     LUT2:I0->O            1   0.203   0.000  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd1_lut<0> (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd1_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd1_cy<0> (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd1_cy<0>)
+     XORCY:CI->O           2   0.180   0.617  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd1_xor<1> (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd_11)
+     LUT3:I2->O            1   0.205   0.580  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd25 (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd21)
+     LUT4:I3->O            1   0.205   0.000  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd2_lut<0>2 (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd2_lut<0>2)
+     MUXCY:S->O            1   0.172   0.000  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd2_cy<0>_1 (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd2_cy<0>2)
+     XORCY:CI->O           1   0.180   0.580  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd2_xor<0>_2 (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd_32)
+     LUT2:I1->O            1   0.205   0.000  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd5_lut<3> (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd5_lut<3>)
+     MUXCY:S->O            1   0.172   0.000  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd5_cy<3> (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd5_cy<3>)
+     XORCY:CI->O           2   0.180   0.617  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd5_xor<4> (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd_45)
+     LUT3:I2->O            1   0.205   0.580  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd114 (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd114)
+     LUT4:I3->O            1   0.205   0.000  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd11_lut<0>5 (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd11_lut<0>5)
+     MUXCY:S->O            1   0.172   0.000  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd11_cy<0>_4 (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd11_cy<0>5)
+     XORCY:CI->O           1   0.180   0.580  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd11_xor<0>_5 (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd_611)
+     LUT2:I1->O            1   0.205   0.000  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd24_lut<6> (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd24_lut<6>)
+     MUXCY:S->O            0   0.172   0.000  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd24_cy<6> (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd24_cy<6>)
+     XORCY:CI->O           9   0.180   0.829  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd24_xor<7> (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd_724)
+     INV:I->O             32   0.206   1.291  PC_UART_Receiver/PC_Rx_Buffer[0][7]_checksum[7]_AND_10_o3_cepot_INV_0 (PC_UART_Receiver/PC_Rx_Buffer[0][7]_checksum[7]_AND_10_o3_cepot)
+     FDE:CE                    0.322          PC_UART_Receiver/PC_Rx_Jack6_Cyclic_Command_0
+    ----------------------------------------
+    Total                     10.629ns (4.168ns logic, 6.461ns route)
+                                       (39.2% logic, 60.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              1.903ns (Levels of Logic = 1)
+  Source:            RX_RS232 (PAD)
+  Destination:       RX_RS232_Debounce_Filter/debounce_sr_0 (FF)
+  Destination Clock: clk rising
+
+  Data Path: RX_RS232 to RX_RS232_Debounce_Filter/debounce_sr_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.222   0.579  RX_RS232_IBUF (RX_RS232_IBUF)
+     FD:D                      0.102          RX_RS232_Debounce_Filter/debounce_sr_0
+    ----------------------------------------
+    Total                      1.903ns (1.324ns logic, 0.579ns route)
+                                       (69.6% logic, 30.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 33 / 33
+-------------------------------------------------------------------------
+Offset:              3.668ns (Levels of Logic = 1)
+  Source:            PC_UART_Receiver/PC_Rx_Jack4_Cyclic_Command_31 (FF)
+  Destination:       debug_pin<31> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: PC_UART_Receiver/PC_Rx_Jack4_Cyclic_Command_31 to debug_pin<31>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              3   0.447   0.650  PC_UART_Receiver/PC_Rx_Jack4_Cyclic_Command_31 (PC_UART_Receiver/PC_Rx_Jack4_Cyclic_Command_31)
+     OBUF:I->O                 2.571          debug_pin_31_OBUF (debug_pin<31>)
+    ----------------------------------------
+    Total                      3.668ns (3.018ns logic, 0.650ns route)
+                                       (82.3% logic, 17.7% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |   10.629|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 13.00 secs
+Total CPU time to Xst completion: 11.70 secs
+ 
+--> 
+
+
+Total memory usage is 394700 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   11 (   0 filtered)
+Number of infos    :    4 (   0 filtered)
+

@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "/home/nabav/Workspace/InterfaceBoard/InterfaceBoard_tb_isim_beh.exe" -prj "/home/nabav/Workspace/InterfaceBoard/InterfaceBoard_tb_beh.prj" "work.InterfaceBoard_tb" 
