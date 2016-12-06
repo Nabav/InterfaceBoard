@@ -83,7 +83,45 @@ architecture Behavioral of InterfaceBoard is
 			Rx_Parameter_Value : out std_logic_vector(15 downto 0)
 		);
 	end component;
-	
+	component Interface_Board_Main_State_Machine is
+		port ( 
+			clk : in std_logic;
+			DIR_RS485 : out std_logic;
+			PC_Rx_Data_Ready : in std_logic;
+			PC_Rx_Packet_Type : in std_logic_vector(2 downto 0);
+			PC_Rx_Jack_Nember : in std_logic_vector(2 downto 0);
+			PC_Rx_Parameter_Address : in std_logic_vector(7 downto 0);
+			PC_Rx_Parameter_Value : in std_logic_vector(15 downto 0);
+			PC_Rx_Jack1_Cyclic_Command : in std_logic_vector(31 downto 0);
+			PC_Rx_Jack2_Cyclic_Command : in std_logic_vector(31 downto 0);
+			PC_Rx_Jack3_Cyclic_Command : in std_logic_vector(31 downto 0);
+			PC_Rx_Jack4_Cyclic_Command : in std_logic_vector(31 downto 0);
+			PC_Rx_Jack5_Cyclic_Command : in std_logic_vector(31 downto 0);
+			PC_Rx_Jack6_Cyclic_Command : in std_logic_vector(31 downto 0);
+			PC_Response_Ready : out std_logic;
+			PC_Tx_Packet_Type : out std_logic_vector(2 downto 0);
+			PC_Tx_Jack_Nember : out std_logic_vector(2 downto 0);
+			PC_Tx_Parameter_Address : out std_logic_vector(7 downto 0);
+			PC_Tx_Parameter_Value : out std_logic_vector(15 downto 0);
+			PC_Tx_Jack1_Cyclic_Feedback : out std_logic_vector(31 downto 0);
+			PC_Tx_Jack2_Cyclic_Feedback : out std_logic_vector(31 downto 0);
+			PC_Tx_Jack3_Cyclic_Feedback : out std_logic_vector(31 downto 0);
+			PC_Tx_Jack4_Cyclic_Feedback : out std_logic_vector(31 downto 0);
+			PC_Tx_Jack5_Cyclic_Feedback : out std_logic_vector(31 downto 0);
+			PC_Tx_Jack6_Cyclic_Feedback : out std_logic_vector(31 downto 0);
+			Tx_Start : out std_logic;
+			Tx_Frame_Type : out std_logic_vector(1 downto 0);
+			Tx_Jack_Nember : out std_logic_vector(2 downto 0);
+			Tx_Parameter_Address : out std_logic_vector(7 downto 0);
+			Tx_Parameter_Value : out std_logic_vector(15 downto 0);
+			Tx_Busy : in std_logic;
+			Rx_Ready : in std_logic;
+			Rx_Frame_Type : in std_logic_vector(1 downto 0);
+			Rx_Jack_Nember : in std_logic_vector(2 downto 0);
+			Rx_Parameter_Address : in std_logic_vector(7 downto 0);
+			Rx_Parameter_Value : in std_logic_vector(15 downto 0)
+		);
+	end component;	
 	signal RX_RS232_F : std_logic := '1';	
 	signal PC_Rx_Data_Ready : std_logic := '0';
 	signal PC_Rx_Packet_Type : std_logic_vector(2 downto 0) := (others => '0');
@@ -166,6 +204,7 @@ begin
 			PC_Tx_Jack5_Cyclic_Feedback => PC_Tx_Jack5_Cyclic_Feedback,
 			PC_Tx_Jack6_Cyclic_Feedback => PC_Tx_Jack6_Cyclic_Feedback
 		);
+	
 	RS485_Frame_Transmitter : Frame_Transmitter
 		port map ( 
 			clk => clk,
@@ -199,25 +238,46 @@ begin
 			Rx_Parameter_Value => Rx_Parameter_Value
 		);
 	
-	Tx_Start <= PC_Rx_Data_Ready;
-	Tx_Frame_Type <= "01";
-	Tx_Jack_Nember <= "101";
-	Tx_Parameter_Address <= x"55";
-	Tx_Parameter_Value <= x"5555";
-	
-	PC_Response_Ready <= PC_Rx_Data_Ready;
-	PC_Tx_Packet_Type <= "011" when PC_Rx_Packet_Type = "010" else "110";
-	PC_Tx_Jack_Nember <= PC_Rx_Jack_Nember;
-	PC_Tx_Parameter_Address <= PC_Rx_Parameter_Address;
-	PC_Tx_Parameter_Value <= PC_Rx_Parameter_Value;
-	PC_Tx_Jack1_Cyclic_Feedback <= PC_Rx_Jack1_Cyclic_Command;
-	PC_Tx_Jack2_Cyclic_Feedback <= PC_Rx_Jack2_Cyclic_Command;
-	PC_Tx_Jack3_Cyclic_Feedback <= PC_Rx_Jack3_Cyclic_Command;
-	PC_Tx_Jack4_Cyclic_Feedback <= PC_Rx_Jack4_Cyclic_Command;
-	PC_Tx_Jack5_Cyclic_Feedback <= PC_Rx_Jack5_Cyclic_Command;
-	PC_Tx_Jack6_Cyclic_Feedback <= PC_Rx_Jack6_Cyclic_Command;
+	Main_FSM : Interface_Board_Main_State_Machine
+		port map ( 
+			clk => clk,
+			DIR_RS485 => DIR_RS485,
+			PC_Rx_Data_Ready => PC_Rx_Data_Ready,
+			PC_Rx_Packet_Type => PC_Rx_Packet_Type,
+			PC_Rx_Jack_Nember => PC_Rx_Jack_Nember,
+			PC_Rx_Parameter_Address => PC_Rx_Parameter_Address,
+			PC_Rx_Parameter_Value => PC_Rx_Parameter_Value,
+			PC_Rx_Jack1_Cyclic_Command => PC_Rx_Jack1_Cyclic_Command,
+			PC_Rx_Jack2_Cyclic_Command => PC_Rx_Jack2_Cyclic_Command,
+			PC_Rx_Jack3_Cyclic_Command => PC_Rx_Jack3_Cyclic_Command,
+			PC_Rx_Jack4_Cyclic_Command => PC_Rx_Jack4_Cyclic_Command,
+			PC_Rx_Jack5_Cyclic_Command => PC_Rx_Jack5_Cyclic_Command,
+			PC_Rx_Jack6_Cyclic_Command => PC_Rx_Jack6_Cyclic_Command,
+			PC_Response_Ready => PC_Response_Ready,
+			PC_Tx_Packet_Type => PC_Tx_Packet_Type,
+			PC_Tx_Jack_Nember => PC_Tx_Jack_Nember,
+			PC_Tx_Parameter_Address => PC_Tx_Parameter_Address,
+			PC_Tx_Parameter_Value => PC_Tx_Parameter_Value,
+			PC_Tx_Jack1_Cyclic_Feedback => PC_Tx_Jack1_Cyclic_Feedback,
+			PC_Tx_Jack2_Cyclic_Feedback => PC_Tx_Jack2_Cyclic_Feedback,
+			PC_Tx_Jack3_Cyclic_Feedback => PC_Tx_Jack3_Cyclic_Feedback,
+			PC_Tx_Jack4_Cyclic_Feedback => PC_Tx_Jack4_Cyclic_Feedback,
+			PC_Tx_Jack5_Cyclic_Feedback => PC_Tx_Jack5_Cyclic_Feedback,
+			PC_Tx_Jack6_Cyclic_Feedback => PC_Tx_Jack6_Cyclic_Feedback,
+			Tx_Start => Tx_Start,
+			Tx_Frame_Type => Tx_Frame_Type,
+			Tx_Jack_Nember => Tx_Jack_Nember,
+			Tx_Parameter_Address => Tx_Parameter_Address,
+			Tx_Parameter_Value => Tx_Parameter_Value,
+			Tx_Busy => Tx_Busy,
+			Rx_Ready => Rx_Ready,
+			Rx_Frame_Type => Rx_Frame_Type,
+			Rx_Jack_Nember => Rx_Jack_Nember,
+			Rx_Parameter_Address => Rx_Parameter_Address,
+			Rx_Parameter_Value => Rx_Parameter_Value
+		);
 
-	debug_pin(0) <= Rx_Ready;
+	debug_pin(0) <= PC_Rx_Data_Ready;
 	debug_pin(2 downto 1) <= Rx_Frame_Type;
 	debug_pin(5 downto 3) <= Rx_Jack_Nember;
 	debug_pin(13 downto 6) <= Rx_Parameter_Address;

@@ -114,6 +114,9 @@ Parsing architecture <Behavioral> of entity <uart_transmitter>.
 Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/UART_Receiver.vhd" into library work
 Parsing entity <UART_Receiver>.
 Parsing architecture <Behavioral> of entity <uart_receiver>.
+Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/Interface_Board_Main_State_Machine.vhd" into library work
+Parsing entity <Interface_Board_Main_State_Machine>.
+Parsing architecture <Behavioral> of entity <interface_board_main_state_machine>.
 Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/Frame_Transmitter.vhd" into library work
 Parsing entity <Frame_Transmitter>.
 Parsing architecture <Behavioral> of entity <frame_transmitter>.
@@ -145,13 +148,14 @@ Elaborating entity <Debounce> (architecture <Behavioral>) with generics from lib
 
 Elaborating entity <Frame_Receiver> (architecture <Behavioral>) from library <work>.
 
+Elaborating entity <Interface_Board_Main_State_Machine> (architecture <Behavioral>) from library <work>.
+
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Synthesizing Unit <InterfaceBoard>.
     Related source file is "/home/nabav/Workspace/InterfaceBoard/InterfaceBoard.vhd".
-INFO:Xst:3210 - "/home/nabav/Workspace/InterfaceBoard/InterfaceBoard.vhd" line 169: Output port <Tx_Busy> of the instance <RS485_Frame_Transmitter> is unconnected or connected to loadless signal.
     Summary:
 	no macro.
 Unit <InterfaceBoard> synthesized.
@@ -391,12 +395,13 @@ Synthesizing Unit <Frame_Transmitter>.
     Found 8-bit adder for signal <_n0146> created at line 25.
     Found 8-bit adder for signal <_n0147> created at line 25.
     Found 8-bit subtractor for signal <checksum> created at line 25.
+    Found 1-bit 40-to-1 multiplexer for signal <bit_number[5]_X_10_o_Mux_7_o> created at line 60.
     Found 6-bit comparator greater for signal <n0000> created at line 34
     Summary:
 	inferred   6 Adder/Subtractor(s).
-	inferred  32 D-type flip-flop(s).
+	inferred  46 D-type flip-flop(s).
 	inferred   1 Comparator(s).
-	inferred  30 Multiplexer(s).
+	inferred   6 Multiplexer(s).
 	inferred   1 Finite State Machine(s).
 Unit <Frame_Transmitter> synthesized.
 
@@ -433,15 +438,76 @@ Synthesizing Unit <Frame_Receiver>.
 	inferred   2 Comparator(s).
 Unit <Frame_Receiver> synthesized.
 
+Synthesizing Unit <Interface_Board_Main_State_Machine>.
+    Related source file is "/home/nabav/Workspace/InterfaceBoard/Interface_Board_Main_State_Machine.vhd".
+WARNING:Xst:647 - Input <Rx_Frame_Type> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 1-bit register for signal <Tx_Start>.
+    Found 1-bit register for signal <PC_Response_Ready>.
+    Found 5-bit register for signal <state>.
+    Found 2-bit register for signal <Tx_Frame_Type>.
+    Found 3-bit register for signal <Tx_Jack_Nember>.
+    Found 8-bit register for signal <Tx_Parameter_Address>.
+    Found 16-bit register for signal <Tx_Parameter_Value>.
+    Found 4-bit register for signal <sequence_number>.
+    Found 3-bit register for signal <PC_Tx_Packet_Type>.
+    Found 3-bit register for signal <PC_Tx_Jack_Nember>.
+    Found 8-bit register for signal <PC_Tx_Parameter_Address>.
+    Found 16-bit register for signal <PC_Tx_Parameter_Value>.
+    Found 16-bit register for signal <jack_feedbacks<0>>.
+    Found 16-bit register for signal <jack_feedbacks<1>>.
+    Found 16-bit register for signal <jack_feedbacks<2>>.
+    Found 16-bit register for signal <jack_feedbacks<3>>.
+    Found 16-bit register for signal <jack_feedbacks<4>>.
+    Found 16-bit register for signal <jack_feedbacks<5>>.
+    Found 16-bit register for signal <jack_feedbacks<6>>.
+    Found 16-bit register for signal <jack_feedbacks<7>>.
+    Found 16-bit register for signal <jack_feedbacks<8>>.
+    Found 16-bit register for signal <jack_feedbacks<9>>.
+    Found 16-bit register for signal <jack_feedbacks<10>>.
+    Found 16-bit register for signal <jack_feedbacks<11>>.
+    Found 1-bit register for signal <Main_FSM.PC_Rx_Data_Ready_old>.
+    Found 1-bit register for signal <Main_FSM.Tx_Busy_old>.
+    Found 1-bit register for signal <Main_FSM.Rx_Ready_old>.
+    Found 12-bit register for signal <Main_FSM.timeout_counter>.
+    Found finite state machine <FSM_2> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 21                                             |
+    | Transitions        | 63                                             |
+    | Inputs             | 17                                             |
+    | Outputs            | 13                                             |
+    | Clock              | clk (rising_edge)                              |
+    | Power Up State     | idle                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 3-bit adder for signal <jack_of_the_sequence> created at line 70.
+    Found 12-bit adder for signal <Main_FSM.timeout_counter[11]_GND_13_o_add_91_OUT> created at line 239.
+    Found 4-bit adder for signal <sequence_number[3]_GND_13_o_add_143_OUT> created at line 262.
+    Found 16-bit 12-to-1 multiplexer for signal <sequence_number[3]_X_13_o_wide_mux_55_OUT> created at line 174.
+    Found 3-bit comparator equal for signal <PC_Rx_Jack_Nember[2]_Rx_Jack_Nember[2]_equal_40_o> created at line 154
+    Found 8-bit comparator equal for signal <PC_Rx_Parameter_Address[7]_Rx_Parameter_Address[7]_equal_41_o> created at line 154
+    Found 3-bit comparator equal for signal <jack_of_the_sequence[2]_Rx_Jack_Nember[2]_equal_98_o> created at line 250
+    Found 8-bit comparator equal for signal <read_address_of_the_sequence[7]_Rx_Parameter_Address[7]_equal_99_o> created at line 250
+    Found 4-bit comparator greater for signal <sequence_number[3]_PWR_16_o_LessThan_58_o> created at line 261
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred 272 D-type flip-flop(s).
+	inferred   5 Comparator(s).
+	inferred  26 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <Interface_Board_Main_State_Machine> synthesized.
+
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
 # RAMs                                                 : 1
  8x1-bit single-port Read Only RAM                     : 1
-# Adders/Subtractors                                   : 66
+# Adders/Subtractors                                   : 69
+ 12-bit adder                                          : 1
+ 3-bit adder                                           : 1
  3-bit subtractor                                      : 1
- 4-bit adder                                           : 1
+ 4-bit adder                                           : 2
  5-bit adder                                           : 1
  6-bit adder                                           : 1
  6-bit subtractor                                      : 1
@@ -449,37 +515,46 @@ Macro Statistics
  8-bit adder                                           : 56
  8-bit subtractor                                      : 2
  9-bit adder                                           : 2
-# Registers                                            : 94
- 1-bit register                                        : 33
+# Registers                                            : 114
+ 1-bit register                                        : 28
  10-bit register                                       : 1
- 16-bit register                                       : 3
- 2-bit register                                        : 1
- 3-bit register                                        : 3
+ 12-bit register                                       : 1
+ 16-bit register                                       : 17
+ 2-bit register                                        : 2
+ 3-bit register                                        : 6
  32-bit register                                       : 11
- 4-bit register                                        : 2
+ 4-bit register                                        : 3
  40-bit register                                       : 1
  5-bit register                                        : 1
  6-bit register                                        : 2
  7-bit register                                        : 1
- 8-bit register                                        : 33
+ 8-bit register                                        : 38
  9-bit register                                        : 2
-# Comparators                                          : 8
- 4-bit comparator greater                              : 1
+# Comparators                                          : 13
+ 3-bit comparator equal                                : 2
+ 4-bit comparator greater                              : 2
  5-bit comparator greater                              : 1
  6-bit comparator greater                              : 1
  7-bit comparator greater                              : 1
  7-bit comparator lessequal                            : 1
+ 8-bit comparator equal                                : 2
  9-bit comparator greater                              : 1
  9-bit comparator lessequal                            : 2
-# Multiplexers                                         : 63
- 1-bit 2-to-1 multiplexer                              : 31
+# Multiplexers                                         : 65
+ 1-bit 2-to-1 multiplexer                              : 6
+ 1-bit 40-to-1 multiplexer                             : 1
  1-bit 8-to-1 multiplexer                              : 1
- 4-bit 2-to-1 multiplexer                              : 2
+ 12-bit 2-to-1 multiplexer                             : 9
+ 16-bit 12-to-1 multiplexer                            : 1
+ 16-bit 2-to-1 multiplexer                             : 4
+ 2-bit 2-to-1 multiplexer                              : 1
+ 3-bit 2-to-1 multiplexer                              : 4
+ 4-bit 2-to-1 multiplexer                              : 5
  5-bit 2-to-1 multiplexer                              : 2
  6-bit 2-to-1 multiplexer                              : 2
- 8-bit 2-to-1 multiplexer                              : 24
+ 8-bit 2-to-1 multiplexer                              : 28
  8-bit 26-to-1 multiplexer                             : 1
-# FSMs                                                 : 2
+# FSMs                                                 : 3
 
 =========================================================================
 
@@ -489,7 +564,7 @@ Macro Statistics
 
 INFO:Xst:2261 - The FF/Latch <PC_Tx_Buffer_0_1> in Unit <PC_UART_Transmitter> is equivalent to the following 2 FFs/Latches, which will be removed : <PC_Tx_Buffer_0_6> <PC_Tx_Buffer_0_7> 
 INFO:Xst:2261 - The FF/Latch <PC_Tx_Buffer_0_3> in Unit <PC_UART_Transmitter> is equivalent to the following 2 FFs/Latches, which will be removed : <PC_Tx_Buffer_0_4> <PC_Tx_Buffer_0_5> 
-INFO:Xst:2261 - The FF/Latch <Tx_Buffer_39> in Unit <RS485_Frame_Transmitter> is equivalent to the following 16 FFs/Latches, which will be removed : <Tx_Buffer_37> <Tx_Buffer_35> <Tx_Buffer_34> <Tx_Buffer_32> <Tx_Buffer_30> <Tx_Buffer_28> <Tx_Buffer_22> <Tx_Buffer_26> <Tx_Buffer_24> <Tx_Buffer_20> <Tx_Buffer_18> <Tx_Buffer_16> <Tx_Buffer_14> <Tx_Buffer_12> <Tx_Buffer_10> <Tx_Buffer_8> 
+INFO:Xst:2261 - The FF/Latch <Tx_Buffer_39> in Unit <RS485_Frame_Transmitter> is equivalent to the following FF/Latch, which will be removed : <Tx_Buffer_37> 
 WARNING:Xst:1426 - The value init of the FF/Latch PC_Tx_Buffer_0_1 hinder the constant cleaning in the block PC_UART_Transmitter.
    You should achieve better results by setting this init to 1.
 WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_39 hinder the constant cleaning in the block RS485_Frame_Transmitter.
@@ -543,9 +618,11 @@ Advanced HDL Synthesis Report
 Macro Statistics
 # RAMs                                                 : 1
  8x1-bit single-port distributed Read Only RAM         : 1
-# Adders/Subtractors                                   : 5
+# Adders/Subtractors                                   : 8
+ 12-bit adder                                          : 1
+ 3-bit adder                                           : 1
  3-bit subtractor                                      : 1
- 4-bit adder                                           : 1
+ 4-bit adder                                           : 2
  5-bit adder                                           : 1
  6-bit subtractor                                      : 1
  8-bit subtractor                                      : 1
@@ -558,25 +635,33 @@ Macro Statistics
  6-bit up counter                                      : 1
  7-bit up counter                                      : 1
  9-bit up counter                                      : 2
-# Registers                                            : 776
- Flip-Flops                                            : 776
-# Comparators                                          : 8
- 4-bit comparator greater                              : 1
+# Registers                                            : 1062
+ Flip-Flops                                            : 1062
+# Comparators                                          : 13
+ 3-bit comparator equal                                : 2
+ 4-bit comparator greater                              : 2
  5-bit comparator greater                              : 1
  6-bit comparator greater                              : 1
  7-bit comparator greater                              : 1
  7-bit comparator lessequal                            : 1
+ 8-bit comparator equal                                : 2
  9-bit comparator greater                              : 1
  9-bit comparator lessequal                            : 2
-# Multiplexers                                         : 70
- 1-bit 2-to-1 multiplexer                              : 31
+# Multiplexers                                         : 72
+ 1-bit 2-to-1 multiplexer                              : 6
  1-bit 26-to-1 multiplexer                             : 8
+ 1-bit 40-to-1 multiplexer                             : 1
  1-bit 8-to-1 multiplexer                              : 1
- 4-bit 2-to-1 multiplexer                              : 2
+ 12-bit 2-to-1 multiplexer                             : 9
+ 16-bit 12-to-1 multiplexer                            : 1
+ 16-bit 2-to-1 multiplexer                             : 4
+ 2-bit 2-to-1 multiplexer                              : 1
+ 3-bit 2-to-1 multiplexer                              : 4
+ 4-bit 2-to-1 multiplexer                              : 5
  5-bit 2-to-1 multiplexer                              : 2
  6-bit 2-to-1 multiplexer                              : 2
- 8-bit 2-to-1 multiplexer                              : 24
-# FSMs                                                 : 2
+ 8-bit 2-to-1 multiplexer                              : 28
+# FSMs                                                 : 3
 
 =========================================================================
 
@@ -592,42 +677,12 @@ WARNING:Xst:1426 - The value init of the FF/Latch PC_Tx_Buffer_0_7 hinder the co
 WARNING:Xst:1293 - FF/Latch <PC_Tx_Buffer_0_3> has a constant value of 0 in block <UART_Transmitter>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <PC_Tx_Buffer_0_4> has a constant value of 0 in block <UART_Transmitter>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <PC_Tx_Buffer_0_5> has a constant value of 0 in block <UART_Transmitter>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_32 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_34 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_35 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
 WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_37 hinder the constant cleaning in the block Frame_Transmitter.
    You should achieve better results by setting this init to 1.
 WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_39 hinder the constant cleaning in the block Frame_Transmitter.
    You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_24 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_26 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_28 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_30 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_16 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_18 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_20 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_22 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_8 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_10 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_12 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch Tx_Buffer_14 hinder the constant cleaning in the block Frame_Transmitter.
-   You should achieve better results by setting this init to 1.
 INFO:Xst:2261 - The FF/Latch <PC_Tx_Buffer_0_1> in Unit <UART_Transmitter> is equivalent to the following 2 FFs/Latches, which will be removed : <PC_Tx_Buffer_0_6> <PC_Tx_Buffer_0_7> 
-INFO:Xst:2261 - The FF/Latch <Tx_Buffer_39> in Unit <Frame_Transmitter> is equivalent to the following 16 FFs/Latches, which will be removed : <Tx_Buffer_37> <Tx_Buffer_35> <Tx_Buffer_34> <Tx_Buffer_32> <Tx_Buffer_30> <Tx_Buffer_28> <Tx_Buffer_22> <Tx_Buffer_26> <Tx_Buffer_24> <Tx_Buffer_20> <Tx_Buffer_18> <Tx_Buffer_16> <Tx_Buffer_14> <Tx_Buffer_8> <Tx_Buffer_12> <Tx_Buffer_10> 
+INFO:Xst:2261 - The FF/Latch <Tx_Buffer_37> in Unit <Frame_Transmitter> is equivalent to the following FF/Latch, which will be removed : <Tx_Buffer_39> 
 Analyzing FSM <MFsm> for best encoding.
 Optimizing FSM <PC_UART_Transmitter/FSM_0> on signal <state[1:2]> with user encoding.
 ------------------------------
@@ -650,6 +705,34 @@ Optimizing FSM <RS485_Frame_Transmitter/FSM_1> on signal <state[1:3]> with user 
  send_high        | 100
  prepare_next_bit | 101
 ------------------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <Main_FSM/FSM_2> on signal <state[1:5]> with user encoding.
+--------------------------------------------------------
+ State                                      | Encoding
+--------------------------------------------------------
+ idle                                       | 00000
+ decode                                     | 00001
+ write_request                              | 00010
+ wait_for_write_request_transmitted         | 00011
+ read_request                               | 00100
+ wait_for_read_request_transmitted          | 00101
+ wait_for_read_done                         | 00110
+ read_response                              | 00111
+ cyclic_command                             | 01000
+ cyclic_write                               | 01001
+ wait_for_cyclic_write_transmitted          | 01010
+ write_latch_commands                       | 01011
+ wait_for_write_latch_commands_transmitted  | 01100
+ write_latch_feedbacks                      | 01101
+ wait_for_write_latch_feedbacks_transmitted | 01110
+ cyclic_feedback                            | 01111
+ cyclic_read                                | 10000
+ wait_for_cyclic_read_transmitted           | 10001
+ wait_for_cyclic_read_done                  | 10010
+ check_end_of_read_sequence                 | 10011
+ cyclic_feedback_response                   | 10100
+--------------------------------------------------------
+WARNING:Xst:1710 - FF/Latch <PC_Tx_Packet_Type_1> (without init value) has a constant value of 1 in block <Interface_Board_Main_State_Machine>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <InterfaceBoard> ...
 
@@ -662,14 +745,13 @@ Optimizing unit <UART_Transmitter> ...
 Optimizing unit <Frame_Transmitter> ...
 
 Optimizing unit <Frame_Receiver> ...
-WARNING:Xst:2677 - Node <RS485_Frame_Transmitter/Tx_Busy> of sequential type is unconnected in block <InterfaceBoard>.
+
+Optimizing unit <Interface_Board_Main_State_Machine> ...
 WARNING:Xst:1293 - FF/Latch <RS485_Frame_Transmitter/baudrate_prescaler_counter_5> has a constant value of 0 in block <InterfaceBoard>. This FF/Latch will be trimmed during the optimization process.
-INFO:Xst:2261 - The FF/Latch <PC_UART_Transmitter/baudrate_prescaler_counter_0> in Unit <InterfaceBoard> is equivalent to the following FF/Latch, which will be removed : <RS485_Frame_Transmitter/baudrate_prescaler_counter_0> 
-INFO:Xst:2261 - The FF/Latch <PC_UART_Transmitter/UART_Tx_FSM.PC_Response_Ready_old> in Unit <InterfaceBoard> is equivalent to the following FF/Latch, which will be removed : <RS485_Frame_Transmitter/Frame_Tx_FSM.Tx_Start_old> 
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block InterfaceBoard, actual ratio is 5.
+Found area constraint ratio of 100 (+ 5) on block InterfaceBoard, actual ratio is 7.
 
 Final Macro Processing ...
 
@@ -677,8 +759,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 787
- Flip-Flops                                            : 787
+# Registers                                            : 1095
+ Flip-Flops                                            : 1095
 
 =========================================================================
 
@@ -701,30 +783,31 @@ Top Level Output File Name         : InterfaceBoard.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 1565
+# BELS                             : 1895
 #      GND                         : 1
-#      INV                         : 11
-#      LUT1                        : 16
-#      LUT2                        : 89
-#      LUT3                        : 198
-#      LUT4                        : 577
-#      LUT5                        : 66
-#      LUT6                        : 93
-#      MUXCY                       : 233
-#      MUXF7                       : 14
+#      INV                         : 7
+#      LUT1                        : 27
+#      LUT2                        : 298
+#      LUT3                        : 238
+#      LUT4                        : 440
+#      LUT5                        : 83
+#      LUT6                        : 195
+#      MUXCY                       : 258
+#      MUXF7                       : 52
+#      MUXF8                       : 1
 #      VCC                         : 1
-#      XORCY                       : 266
-# FlipFlops/Latches                : 787
-#      FD                          : 31
-#      FDE                         : 718
-#      FDR                         : 22
+#      XORCY                       : 294
+# FlipFlops/Latches                : 1095
+#      FD                          : 42
+#      FDE                         : 1014
+#      FDR                         : 23
 #      FDRE                        : 7
 #      FDSE                        : 9
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 34
+# IO Buffers                       : 35
 #      IBUF                        : 2
-#      OBUF                        : 32
+#      OBUF                        : 33
 
 Device utilization summary:
 ---------------------------
@@ -733,20 +816,20 @@ Selected Device : 6slx45fgg484-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             787  out of  54576     1%  
- Number of Slice LUTs:                 1050  out of  27288     3%  
-    Number used as Logic:              1050  out of  27288     3%  
+ Number of Slice Registers:            1095  out of  54576     2%  
+ Number of Slice LUTs:                 1288  out of  27288     4%  
+    Number used as Logic:              1288  out of  27288     4%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   1280
-   Number with an unused Flip Flop:     493  out of   1280    38%  
-   Number with an unused LUT:           230  out of   1280    17%  
-   Number of fully used LUT-FF pairs:   557  out of   1280    43%  
-   Number of unique control sets:        23
+ Number of LUT Flip Flop pairs used:   1740
+   Number with an unused Flip Flop:     645  out of   1740    37%  
+   Number with an unused LUT:           452  out of   1740    25%  
+   Number of fully used LUT-FF pairs:   643  out of   1740    36%  
+   Number of unique control sets:        41
 
 IO Utilization: 
  Number of IOs:                          38
- Number of bonded IOBs:                  35  out of    316    11%  
+ Number of bonded IOBs:                  36  out of    316    11%  
 
 Specific Feature Utilization:
  Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
@@ -772,7 +855,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 787   |
+clk                                | BUFGP                  | 1095  |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -783,9 +866,9 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 10.629ns (Maximum Frequency: 94.079MHz)
+   Minimum period: 10.499ns (Maximum Frequency: 95.248MHz)
    Minimum input arrival time before clock: 1.903ns
-   Maximum output required time after clock: 3.634ns
+   Maximum output required time after clock: 3.975ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -794,16 +877,16 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 10.629ns (frequency: 94.079MHz)
-  Total number of paths / destination ports: 23061131 / 1556
+  Clock period: 10.499ns (frequency: 95.248MHz)
+  Total number of paths / destination ports: 23072987 / 2160
 -------------------------------------------------------------------------
-Delay:               10.629ns (Levels of Logic = 18)
+Delay:               10.499ns (Levels of Logic = 19)
   Source:            PC_UART_Receiver/PC_Rx_Buffer_2_0 (FF)
-  Destination:       PC_UART_Receiver/PC_Rx_Jack1_Cyclic_Command_31 (FF)
+  Destination:       PC_UART_Receiver/PC_Rx_Packet_Type_2 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: PC_UART_Receiver/PC_Rx_Buffer_2_0 to PC_UART_Receiver/PC_Rx_Jack1_Cyclic_Command_31
+  Data Path: PC_UART_Receiver/PC_Rx_Buffer_2_0 to PC_UART_Receiver/PC_Rx_Packet_Type_2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
@@ -824,12 +907,13 @@ Delay:               10.629ns (Levels of Logic = 18)
      XORCY:CI->O           1   0.180   0.580  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd11_xor<0>_5 (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd_611)
      LUT2:I1->O            1   0.205   0.000  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd24_lut<6> (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd24_lut<6>)
      MUXCY:S->O            0   0.172   0.000  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd24_cy<6> (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd24_cy<6>)
-     XORCY:CI->O           9   0.180   0.829  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd24_xor<7> (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd_724)
-     INV:I->O             32   0.206   1.291  PC_UART_Receiver/PC_Rx_Buffer[0][7]_checksum[7]_AND_10_o3_cepot_INV_0 (PC_UART_Receiver/PC_Rx_Buffer[0][7]_checksum[7]_AND_10_o3_cepot)
-     FDE:CE                    0.322          PC_UART_Receiver/PC_Rx_Jack6_Cyclic_Command_0
+     XORCY:CI->O          13   0.180   0.933  PC_UART_Receiver/ADDERTREE_INTERNAL_Madd24_xor<7> (PC_UART_Receiver/ADDERTREE_INTERNAL_Madd_724)
+     LUT5:I4->O           19   0.205   1.072  PC_UART_Receiver/PC_Rx_Buffer[0][7]_checksum[7]_AND_10_o3_rstpot (PC_UART_Receiver/PC_Rx_Buffer[0][7]_checksum[7]_AND_10_o3_rstpot)
+     LUT3:I2->O            1   0.205   0.000  PC_UART_Receiver/PC_Rx_Packet_Type_0_dpot1 (PC_UART_Receiver/PC_Rx_Packet_Type_0_dpot1)
+     FDE:D                     0.102          PC_UART_Receiver/PC_Rx_Packet_Type_0
     ----------------------------------------
-    Total                     10.629ns (4.168ns logic, 6.461ns route)
-                                       (39.2% logic, 60.8% route)
+    Total                     10.499ns (4.152ns logic, 6.347ns route)
+                                       (39.5% logic, 60.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
@@ -852,22 +936,22 @@ Offset:              1.903ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 32 / 32
+  Total number of paths / destination ports: 33 / 33
 -------------------------------------------------------------------------
-Offset:              3.634ns (Levels of Logic = 1)
-  Source:            RS485_Frame_Receiver/Rx_Ready (FF)
-  Destination:       debug_pin<0> (PAD)
+Offset:              3.975ns (Levels of Logic = 1)
+  Source:            RS485_Frame_Receiver/Rx_Parameter_Value_15 (FF)
+  Destination:       debug_pin<29> (PAD)
   Source Clock:      clk rising
 
-  Data Path: RS485_Frame_Receiver/Rx_Ready to debug_pin<0>
+  Data Path: RS485_Frame_Receiver/Rx_Parameter_Value_15 to debug_pin<29>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               2   0.447   0.616  RS485_Frame_Receiver/Rx_Ready (RS485_Frame_Receiver/Rx_Ready)
-     OBUF:I->O                 2.571          debug_pin_0_OBUF (debug_pin<0>)
+     FDE:C->Q             14   0.447   0.957  RS485_Frame_Receiver/Rx_Parameter_Value_15 (RS485_Frame_Receiver/Rx_Parameter_Value_15)
+     OBUF:I->O                 2.571          debug_pin_29_OBUF (debug_pin<29>)
     ----------------------------------------
-    Total                      3.634ns (3.018ns logic, 0.616ns route)
-                                       (83.0% logic, 17.0% route)
+    Total                      3.975ns (3.018ns logic, 0.957ns route)
+                                       (75.9% logic, 24.1% route)
 
 =========================================================================
 
@@ -879,21 +963,21 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |   10.629|         |         |         |
+clk            |   10.499|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 10.00 secs
-Total CPU time to Xst completion: 9.99 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 7.99 secs
  
 --> 
 
 
-Total memory usage is 396264 kilobytes
+Total memory usage is 401440 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   30 (   0 filtered)
-Number of infos    :    9 (   0 filtered)
+Number of warnings :   16 (   0 filtered)
+Number of infos    :    6 (   0 filtered)
 

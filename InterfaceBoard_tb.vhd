@@ -37,15 +37,23 @@ architecture behavior of InterfaceBoard_tb is
 	constant serial_period : time := 26 us;
 	type PC_TX_array_type is array (0 to 25) of std_logic_vector(7 downto 0); 
 	constant PC_TX_Buffer : PC_TX_array_type := (
-		x"C5", 
-		x"11", x"12", x"13", x"14", 
-		x"21", x"22", x"23", x"24", 
-		x"31", x"32", x"33", x"34", 
-		x"41", x"42", x"43", x"44", 
-		x"51", x"52", x"53", x"54", 
-		x"61", x"62", x"63", x"64", 
-		x"BF");
-
+		x"C1", 
+		x"03", x"12", x"13", x"14", 
+		x"00", x"00", x"00", x"00", 
+		x"00", x"00", x"00", x"00", 
+		x"00", x"00", x"00", x"00", 
+		x"00", x"00", x"00", x"00", 
+		x"00", x"00", x"00", x"00", 
+		x"03");
+--		x"C5", 
+--		x"11", x"12", x"13", x"14", 
+--		x"21", x"22", x"23", x"24", 
+--		x"31", x"32", x"33", x"34", 
+--		x"41", x"42", x"43", x"44", 
+--		x"51", x"52", x"53", x"54", 
+--		x"61", x"62", x"63", x"64", 
+--		x"BF");
+		
 begin
  
 	uut: InterfaceBoard port map (

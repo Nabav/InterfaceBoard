@@ -5,7 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/nabav/Workspace/InterfaceBoard/InterfaceBoard.vhd</arg>&quot; line <arg fmt="%s" index="2">169</arg>: Output port &lt;<arg fmt="%s" index="3">Tx_Busy</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">RS485_Frame_Transmitter</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">Rx_Frame_Type</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">PC_Tx_Buffer_0_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">PC_UART_Transmitter</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;PC_Tx_Buffer_0_6&gt; &lt;PC_Tx_Buffer_0_7&gt; </arg>
@@ -14,7 +14,7 @@
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">PC_Tx_Buffer_0_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">PC_UART_Transmitter</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;PC_Tx_Buffer_0_4&gt; &lt;PC_Tx_Buffer_0_5&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">Tx_Buffer_39</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">RS485_Frame_Transmitter</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">16 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Tx_Buffer_37&gt; &lt;Tx_Buffer_35&gt; &lt;Tx_Buffer_34&gt; &lt;Tx_Buffer_32&gt; &lt;Tx_Buffer_30&gt; &lt;Tx_Buffer_28&gt; &lt;Tx_Buffer_22&gt; &lt;Tx_Buffer_26&gt; &lt;Tx_Buffer_24&gt; &lt;Tx_Buffer_20&gt; &lt;Tx_Buffer_18&gt; &lt;Tx_Buffer_16&gt; &lt;Tx_Buffer_14&gt; &lt;Tx_Buffer_12&gt; &lt;Tx_Buffer_10&gt; &lt;Tx_Buffer_8&gt; </arg>
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">Tx_Buffer_39</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">RS485_Frame_Transmitter</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Tx_Buffer_37&gt; </arg>
 </msg>
 
 <msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">PC_Tx_Buffer_0_1</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">PC_UART_Transmitter</arg>.
@@ -58,18 +58,6 @@ You should achieve better results by setting this init to <arg fmt="%i" index="3
 <msg type="warning" file="Xst" num="1896" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">PC_Tx_Buffer_0_5</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">UART_Transmitter</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_32</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_34</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_35</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
 <msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_37</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
 You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
 </msg>
@@ -78,70 +66,16 @@ You should achieve better results by setting this init to <arg fmt="%i" index="3
 You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
 </msg>
 
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_24</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_26</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_28</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_30</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_16</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_18</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_20</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_22</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_8</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_10</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_12</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">Tx_Buffer_14</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">Frame_Transmitter</arg>.
-You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
-</msg>
-
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">PC_Tx_Buffer_0_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">UART_Transmitter</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;PC_Tx_Buffer_0_6&gt; &lt;PC_Tx_Buffer_0_7&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">Tx_Buffer_39</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Frame_Transmitter</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">16 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Tx_Buffer_37&gt; &lt;Tx_Buffer_35&gt; &lt;Tx_Buffer_34&gt; &lt;Tx_Buffer_32&gt; &lt;Tx_Buffer_30&gt; &lt;Tx_Buffer_28&gt; &lt;Tx_Buffer_22&gt; &lt;Tx_Buffer_26&gt; &lt;Tx_Buffer_24&gt; &lt;Tx_Buffer_20&gt; &lt;Tx_Buffer_18&gt; &lt;Tx_Buffer_16&gt; &lt;Tx_Buffer_14&gt; &lt;Tx_Buffer_8&gt; &lt;Tx_Buffer_12&gt; &lt;Tx_Buffer_10&gt; </arg>
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">Tx_Buffer_37</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Frame_Transmitter</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Tx_Buffer_39&gt; </arg>
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RS485_Frame_Transmitter/Tx_Busy</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">InterfaceBoard</arg>&gt;.
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">PC_Tx_Packet_Type_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">1</arg> in block &lt;<arg fmt="%s" index="3">Interface_Board_Main_State_Machine</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">RS485_Frame_Transmitter/baudrate_prescaler_counter_5</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">InterfaceBoard</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">PC_UART_Transmitter/baudrate_prescaler_counter_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">InterfaceBoard</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;RS485_Frame_Transmitter/baudrate_prescaler_counter_0&gt; </arg>
-</msg>
-
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">PC_UART_Transmitter/UART_Tx_FSM.PC_Response_Ready_old</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">InterfaceBoard</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;RS485_Frame_Transmitter/Frame_Tx_FSM.Tx_Start_old&gt; </arg>
 </msg>
 
 </messages>

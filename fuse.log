@@ -1,10 +1,11 @@
-Running: /home/nabav/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -relaunch -intstyle "ise" -incremental -lib "secureip" -o "/home/nabav/Workspace/InterfaceBoard/InterfaceBoard_tb_isim_beh.exe" -prj "/home/nabav/Workspace/InterfaceBoard/InterfaceBoard_tb_beh.prj" "work.InterfaceBoard_tb" 
+Running: /home/nabav/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib secureip -o /home/nabav/Workspace/InterfaceBoard/InterfaceBoard_tb_isim_beh.exe -prj /home/nabav/Workspace/InterfaceBoard/InterfaceBoard_tb_beh.prj work.InterfaceBoard_tb 
 ISim P.20131013 (signature 0xfbc00daa)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
 Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/UART_Transmitter.vhd" into library work
 Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/UART_Receiver.vhd" into library work
+Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/Interface_Board_Main_State_Machine.vhd" into library work
 Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/Frame_Transmitter.vhd" into library work
 Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/Frame_Receiver.vhd" into library work
 Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/Debounce.vhd" into library work
@@ -12,8 +13,8 @@ Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/InterfaceBoard.vhd" into
 Parsing VHDL file "/home/nabav/Workspace/InterfaceBoard/InterfaceBoard_tb.vhd" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 98380 KB
-Fuse CPU Usage: 1300 ms
+Fuse Memory Usage: 98656 KB
+Fuse CPU Usage: 980 ms
 Compiling package standard
 Compiling package std_logic_1164
 Compiling package numeric_std
@@ -25,12 +26,13 @@ Compiling architecture behavioral of entity UART_Transmitter [uart_transmitter_d
 Compiling architecture behavioral of entity Frame_Transmitter [frame_transmitter_default]
 Compiling architecture behavioral of entity Debounce [\Debounce(4)\]
 Compiling architecture behavioral of entity Frame_Receiver [frame_receiver_default]
+Compiling architecture behavioral of entity Interface_Board_Main_State_Machine [interface_board_main_state_machi...]
 Compiling architecture behavioral of entity InterfaceBoard [interfaceboard_default]
 Compiling architecture behavior of entity interfaceboard_tb
 Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
-Compiled 20 VHDL Units
+Compiled 22 VHDL Units
 Built simulation executable /home/nabav/Workspace/InterfaceBoard/InterfaceBoard_tb_isim_beh.exe
-Fuse Memory Usage: 1198992 KB
-Fuse CPU Usage: 1420 ms
-GCC CPU Usage: 110 ms
+Fuse Memory Usage: 1199000 KB
+Fuse CPU Usage: 1120 ms
+GCC CPU Usage: 600 ms
