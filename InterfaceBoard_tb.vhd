@@ -15,12 +15,9 @@ architecture behavior of InterfaceBoard_tb is
 			TX_RS232 : out  std_logic;
 			RX_RS485 : in  std_logic;
 			TX_RS485 : out  std_logic;
-			DIR_RS485 : out  std_logic;
-			debug_pin : out  std_logic_vector(31 downto 0)
+			DIR_RS485 : out  std_logic
 		);
 	end component;
-    
-
 	--Inputs
 	signal clk : std_logic := '0';
 	signal RX_RS232 : std_logic := '1';
@@ -62,8 +59,7 @@ begin
 		TX_RS232 => TX_RS232,
 		RX_RS485 => RX_RS485,
 		TX_RS485 => TX_RS485,
-		DIR_RS485 => DIR_RS485,
-		debug_pin => debug_pin
+		DIR_RS485 => DIR_RS485
 	);
 
 	clk_process :process
